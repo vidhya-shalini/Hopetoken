@@ -1,0 +1,620 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>HopeToken — Transparent Giving </title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;500;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#071322; --card:#0b1b2a; --glass:rgba(255,255,255,0.03);
+    --brand:#0ea5a0; --accent:#ffb703; --muted:#9fb9cf; --good:#22c55e; --danger:#ef4444;
+  }
+  *{box-sizing:border-box}
+  html,body{height:100%;margin:0;font-family:Inter,system-ui,Segoe UI,Arial,sans-serif;background:
+    radial-gradient(1200px 600px at 10% 10%, rgba(14,165,160,0.06), transparent 8%),
+    linear-gradient(180deg,var(--bg),#031021 120%);color:#e6f7ff}
+  a{color:inherit}
+  header{position:sticky;top:0;background:linear-gradient(90deg,rgba(255,255,255,0.02),transparent);backdrop-filter: blur(6px);z-index:20}
+  .nav{max-width:1150px;margin:auto;padding:12px 18px;display:flex;align-items:center;justify-content:space-between;gap:10px}
+  .brand{display:flex;align-items:center;gap:10px}
+  .logo{width:40px;height:40px;border-radius:10px;background:conic-gradient(from 180deg,var(--brand),#22d3ee,#22c55e);display:grid;place-items:center;font-weight:800;color:#012425}
+  nav a{margin:0 8px;padding:8px 10px;border-radius:8px;font-weight:600;color:#cfeef7}
+  nav a:hover{background:rgba(255,255,255,0.03)}
+  .cta{background:var(--brand);color:#012425;border:none;padding:8px 12px;border-radius:10px;font-weight:700;cursor:pointer}
+
+  /* Hero */
+  .hero{max-width:1150px;margin:26px auto;padding:28px;display:grid;grid-template-columns:1.2fr .8fr;gap:18px}
+  .panel{background:var(--card);border-radius:14px;padding:18px;border:1px solid rgba(255,255,255,0.03)}
+  .tag{display:inline-block;padding:6px 10px;border-radius:999px;background:rgba(255,255,255,0.02);font-size:13px;color:var(--muted)}
+  h1{font-size:32px;margin:12px 0 6px}
+  p.lead{color:var(--muted);margin-bottom:14px}
+
+  .stats{display:flex;gap:10px;margin-top:12px}
+  .stat{flex:1;background:linear-gradient(180deg,rgba(255,255,255,0.02),transparent);padding:12px;border-radius:10px;text-align:center}
+  .stat .big{font-size:20px;font-weight:800}
+
+  /* Sections */
+  .section{max-width:1150px;margin:20px auto;padding:0 18px}
+  .grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+  .grid-2{display:grid;grid-template-columns:1fr 380px;gap:14px}
+  .muted{color:var(--muted)}
+  .chip{display:inline-block;padding:6px 10px;border-radius:999px;border:1px solid rgba(255,255,255,0.03);font-size:13px;color:#dff7fb}
+
+  /* Form styles */
+  label{display:block;font-size:13px;color:var(--muted);margin-top:10px}
+  input,select,textarea,button{width:100%;padding:10px;border-radius:10px;border:1px solid rgba(255,255,255,0.04);background:transparent;color:#e6f7ff;outline:none}
+  input:focus,select:focus,textarea:focus{box-shadow:0 0 0 6px rgba(14,165,160,0.08);border-color:rgba(14,165,160,0.6)}
+  .row{display:flex;gap:10px}
+  .row .half{flex:1}
+  .btn{background:var(--brand);border:none;padding:10px 12px;border-radius:10px;color:#012425;font-weight:800;cursor:pointer}
+  .btn.secondary{background:transparent;border:1px solid rgba(255,255,255,0.04);color:var(--muted)}
+  .alert{padding:8px;border-radius:8px;margin-top:8px;font-size:13px}
+
+  .ok{background:rgba(34,197,94,0.12);color:var(--good);border:1px solid rgba(34,197,94,0.12)}
+  .err{background:rgba(239,68,68,0.08);color:var(--danger);border:1px solid rgba(239,68,68,0.08)}
+
+  /* Feed/leaderboard */
+  .feed{background:linear-gradient(180deg,rgba(255,255,255,0.01),transparent);border-radius:12px;padding:8px;max-height:360px;overflow:auto;border:1px solid rgba(255,255,255,0.03)}
+  .feed .item{padding:10px;border-bottom:1px dashed rgba(255,255,255,0.02)}
+  table{width:100%;border-collapse:collapse}
+  th,td{padding:8px;border-bottom:1px dashed rgba(255,255,255,0.02);text-align:left}
+
+  /* Crypto Secure Pay component included below uses its own styles (see later) */
+
+  footer{max-width:1150px;margin:40px auto;padding:20px 18px;color:var(--muted);text-align:center}
+
+  /* Responsive */
+  @media (max-width:980px){
+    .hero{grid-template-columns:1fr}
+    .grid-2{grid-template-columns:1fr}
+    .grid-3{grid-template-columns:1fr}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="nav">
+    <div class="brand">
+      <div class="logo">HT</div>
+      <div>
+        <div style="font-weight:800">HopeToken</div>
+        <div style="font-size:12px;color:var(--muted)">Blockchain · AI · Transparency</div>
+      </div>
+    </div>
+
+    <nav>
+      <a href="#home">Home</a>
+      <a href="#about">About</a>
+      <a href="#features">Features</a>
+      <a href="#donate">Donate</a>
+      <a href="#crypto">CryptoPay</a>
+      <a href="#feed">Feed</a>
+      <a href="#rewards">Rewards</a>
+    </nav>
+
+    <div style="display:flex;gap:8px">
+      <button class="cta" onclick="scrollToId('donate')">Donate</button>
+    </div>
+  </div>
+</header>
+
+<!-- HERO -->
+<section id="home" class="hero">
+  <div class="panel">
+    <span class="tag">Andromeda • ADOs • CW20 & CW721</span>
+    <h1>HopeToken — Transparent funding & fractional ownership for orphanages</h1>
+    <p class="lead">Use blockchain + AI to track donations, distribute funds automatically, and reward donors with hope — and proof.</p>
+
+    <div class="stats">
+      <div class="stat"><div class="big" id="totalAmt">₹0</div><div class="muted">Total Donated</div></div>
+      <div class="stat"><div class="big" id="donorCount">0</div><div class="muted">Donors</div></div>
+      <div class="stat"><div class="big" id="txCount">0</div><div class="muted">Transactions</div></div>
+      <div class="stat"><div class="big" id="txCount">7</div><div class="muted">Orphanages Supported</div></div>
+
+    </div>
+  </div>
+
+  <div class="panel" style="display:flex;flex-direction:column;gap:10px;justify-content:center">
+    <div style="display:flex;align-items:center;gap:12px">
+      <div style="width:64px;height:64px;border-radius:12px;background:linear-gradient(180deg,#0ea5a0,#22d3ee);display:grid;place-items:center;font-weight:900;color:#012425">H</div>
+      <div>
+        <div style="font-weight:800">HopeToken Prototype</div>
+        <div class="muted" style="font-size:13px">Demo-ready UI — local simulation</div>
+      </div>
+    </div>
+    <div class="muted">Features: NFT identities, CW20 HopeTokens, Crowdfund, Splitters, Merkle rewards, AI dashboard</div>
+    <div style="display:flex;gap:8px;margin-top:8px">
+      <button class="btn" onclick="scrollToId('donate')">Try Donate</button>
+      <button class="btn secondary" onclick="scrollToId('features')">See Features</button>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about" class="section">
+  <div class="panel">
+    <h2>About HopeToken</h2>
+    <p class="muted">HopeToken uses blockchain and AI to build trust between donors and orphanages. Donors receive fractional tokens representing their impact, while smart contracts ensure automatic and transparent fund allocation.Ensure every donation is tracked and verifiable on the blockchain. Allow micro-contributions without minimum limits. Provide orphanages with smart tools for resource planning. : Strengthen emotional connection through direct impact visibility. HopeToken redefines charitable giving by making it transparent, accountable, and interactive. With blockchain ensuring trust, AI providing data-driven insights, and fractional tokens giving donors tangible proof of impact, it can bridge the gap between generosity and measurable change.</p>
+  </div>
+</section>
+
+<!-- FEATURES -->
+<section id="features" class="section">
+  <h2>Key Features</h2>
+  <div class="grid-3" style="margin-top:12px">
+    
+    <!-- Existing Features -->
+    <div class="panel">
+      <h3>Tokenized Identity</h3>
+      <p class="muted">Orphanages get an immutable NFT profile (CW721) that stores identity and proof.</p>
+    </div>
+    
+    <div class="panel">
+      <h3>HopeTokens (CW20)</h3>
+      <p class="muted">Donors receive CW20 tokens as proof-of-contribution and governance rights.</p>
+    </div>
+    
+    <div class="panel">
+      <h3>Automatic Splitters</h3>
+      <p class="muted">Splitter ADOs automatically divide incoming funds into food, education, medical, savings.</p>
+    </div>
+    
+    <!--  Features -->
+    <div class="panel">
+      <h3>AI Impact Dashboard</h3>
+      <p class="muted">Real-time analytics show urgent needs, funding trends, and impact reports for each orphanage.</p>
+    </div>
+    
+    <div class="panel">
+      <h3>Volunteer Rewards</h3>
+      <p class="muted">Volunteers earn NFT badges or bonus HopeTokens for contributing skills or time.</p>
+    </div>
+    
+    <div class="panel">
+      <h3>Transparent CSR Reports</h3>
+      <p class="muted">Corporate sponsors can download blockchain-verified reports for compliance and PR use.</p>
+    </div>
+    
+  </div>
+</section>
+
+<!-- DONATE + AUTH -->
+<section id="donate" class="section">
+  <h2>Sign up & Donate</h2>
+  <div class="grid-2" style="margin-top:12px">
+    <!-- left: auth form -->
+    <div class="panel">
+      <h3>Create Account / Login</h3>
+      <div class="muted">UI validation </div>
+
+      <label>Name</label>
+      <input id="name" placeholder="Full name (required)">
+
+      <div id="errName" class="alert err" style="display:none">Name is required.</div>
+
+      <label>Email</label>
+      <input id="email" placeholder="you@example.com">
+      <div id="errEmail" class="alert err" style="display:none">Email invalid (≥8 chars and proper format).</div>
+
+      <label>Password</label>
+      <input id="password" type="password" placeholder="Strong password">
+      <div id="errPass" class="alert err" style="display:none">Password must be ≥8 chars and include Upper, lower, number, special (@#$!%*?&).</div>
+
+      <div style="display:flex;gap:8px;margin-top:10px">
+        <button class="btn" id="btnSignup">Sign Up</button>
+        <button class="btn secondary" id="btnLogin">Login</button>
+      </div>
+
+      <div style="margin-top:12px;display:flex;gap:8px">
+        <button class="btn secondary" title="UI only">Google</button>
+        <button class="btn secondary" title="UI only">LinkedIn</button>
+        <button class="btn secondary" title="UI only">Microsoft</button>
+      </div>
+
+      <div id="authMsg" class="alert ok" style="display:none;margin-top:12px"></div>
+    </div>
+
+    <!-- right: donation -->
+    <div class="panel">
+      <h3>Donation</h3>
+      <label>Amount (₹)</label>
+      <input id="amount" type="number" min="10" placeholder="e.g., 500">
+
+      <label>Purpose</label>
+      <select id="purpose">
+        <option>Food</option>
+        <option>Medical</option>
+        <option>Education</option>
+        <option>Savings</option>
+      </select>
+
+      <label>Message (optional)</label>
+      <textarea id="message" rows="2" placeholder="A short note..."></textarea>
+
+      <div style="display:flex;gap:8px;margin-top:12px">
+        <button class="btn" id="btnDonate">Donate (Secure Pay)</button>
+        <button class="btn secondary" id="btnSplitPreview">Show Split</button>
+      </div>
+
+      <div id="donateAlert" style="margin-top:12px;display:none" class="alert ok"></div>
+      <div id="donateError" style="margin-top:12px;display:none" class="alert err"></div>
+
+      <div style="margin-top:12px" class="muted">Demo: donations stored locally and feed updates in real time. Use Export to download CSV.</div>
+    </div>
+  </div>
+</section>
+
+<!-- CRYPTO PAY (Secure Pay component will display modal and run animation) -->
+<section id="crypto" class="section">
+  <h2>CryptoPay Simulator</h2>
+  <div class="panel">
+    <div style="display:flex;gap:12px;align-items:center">
+      <div style="flex:1">
+        <label>From (public key)</label>
+        <input id="fromAddr" placeholder="hopetoken1user..." />
+      </div>
+      <div style="width:220px">
+        <label>Token</label>
+        <select id="token">
+          <option>HTKN</option><option>ATOM</option><option>USDC</option>
+        </select>
+      </div>
+      <div style="width:140px">
+        <label>Amount</label>
+        <input id="cryptoAmount" type="number" min="1" />
+      </div>
+    </div>
+
+    <div style="display:flex;gap:8px;margin-top:12px">
+      <button class="btn" id="btnCryptoPay">Secure Pay (simulate)</button>
+      <button class="btn secondary" id="btnCryptoQuick">CryptoQuick</button>
+    </div>
+
+    <div style="margin-top:12px" class="muted">This simulates encryption, signing and broadcast. A demo txHash will be recorded on success.</div>
+  </div>
+</section>
+
+<!-- FEED & LEADERBOARD -->
+<section id="feed" class="section">
+  <h2>Live Feed & Leaderboard</h2>
+  <div style="display:grid;grid-template-columns:1fr 340px;gap:12px;margin-top:12px">
+    <div class="panel feed" id="liveFeed"></div>
+    <div class="panel">
+      <h4>Leaderboard</h4>
+      <div style="max-height:300px;overflow:auto">
+        <table id="leaderboard"><thead><tr><th>Donor</th><th>Total (₹)</th></tr></thead><tbody></tbody></table>
+      </div>
+      <div style="display:flex;gap:8px;margin-top:12px">
+        <button class="btn" id="exportCSV">Export CSV</button>
+        <button class="btn secondary" id="clearData">Clear Local Data</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- REWARDS -->
+<section id="rewards" class="section">
+  <h2>Rewards & Incentives</h2>
+  <p class="muted" style="max-width:800px;margin:auto;margin-bottom:20px;text-align:center;">
+    HopeToken rewards both donors and volunteers for their support, making contributions more engaging and impactful.
+    Rewards are designed to build long-term relationships and encourage continued participation.
+  </p>
+
+  <div class="grid-3" style="margin-top:12px">
+    
+    <div class="panel">
+      <h3>NFT Badges</h3>
+      <p class="muted">Unique blockchain-based achievement badges for donations, volunteering, and special campaigns.</p>
+    </div>
+
+    <div class="panel">
+      <h3>Bonus HopeTokens</h3>
+      <p class="muted">Extra HopeTokens for early donors, recurring supporters, or meeting funding milestones.</p>
+    </div>
+
+    <div class="panel">
+      <h3>Exclusive Access</h3>
+      <p class="muted">Invitations to private updates, donor-only events, and decision-making polls for project priorities.</p>
+    </div>
+
+  </div>
+</section>
+
+<footer>© 2025 HopeToken. Built with love • Upgrade to real blockchain & IPFS for production.</footer>
+<style>
+  
+  /* Secure Pay styles (modal + animation) */
+  .sp-overlay{position:fixed;inset:0;background:rgba(2,12,24,.75);backdrop-filter:blur(6px);display:none;align-items:center;justify-content:center;z-index:9999}
+  .sp-card{width:min(840px,96vw);background:#0b1422;border:1px solid rgba(255,255,255,.06);border-radius:14px;color:#e9f4ff;padding:12px;position:relative}
+  .sp-head{display:flex;align-items:center;gap:12px;padding:8px;border-bottom:1px solid rgba(255,255,255,.04)}
+  .sp-lock{width:44px;height:44px;border-radius:10px;background:conic-gradient(from 210deg,#0ea5a0,#22d3ee);display:grid;place-items:center;font-weight:900;color:#012425}
+  .sp-body{display:grid;grid-template-columns:1fr 1fr;gap:12px;padding:12px}
+  .sp-status{background:#071827;padding:12px;border-radius:10px;border:1px solid rgba(255,255,255,.03)}
+  .sp-term{background:#020817;padding:10px;border-radius:8px;height:220px;overflow:auto;font-family:ui-monospace,Menlo,monospace;color:#bfe9ff;border:1px solid rgba(255,255,255,.03)}
+  .sp-row{display:flex;align-items:center;gap:8px;margin:8px 0}
+  .sp-step{display:flex;align-items:center;gap:10px;margin:8px 0}
+  .dot{width:10px;height:10px;border-radius:10px;background:#29405f}
+  .sp-step.active .dot{background:#0ea5a0;box-shadow:0 0 0 8px rgba(14,165,160,.12)}
+  .sp-step.done .dot{background:#22c55e}
+  .sp-bar{height:8px;background:#071827;border-radius:999px;overflow:hidden;border:1px solid rgba(255,255,255,.03)}
+  .sp-bar>div{height:100%;width:0;background:linear-gradient(90deg,#22d3ee,#0ea5a0);transition:width .35s ease}
+  .sp-aes{display:grid;grid-template-columns:repeat(8,1fr);gap:6px;margin-top:8px}
+  .sp-block{height:18px;background:#102; border-radius:6px; box-shadow:0 4px 14px rgba(0,0,0,.5); animation:sp-glow 1.4s ease-in-out infinite alternate}
+  @keyframes sp-glow{to{background:linear-gradient(90deg,#0ea5a0,#22d3ee)}}
+  .sp-foot{display:flex;justify-content:space-between;align-items:center;padding:8px;border-top:1px solid rgba(255,255,255,.03)}
+  .sp-close{background:#102535;color:#bfe9ff;border:1px solid rgba(255,255,255,.03);padding:8px 12px;border-radius:8px;cursor:pointer}
+  .sp-primary{background:var(--brand);border:none;padding:8px 14px;border-radius:8px;color:#012425;font-weight:800;cursor:pointer}
+  .sp-success{display:none;color:#86efac;align-items:center;gap:8px;font-weight:800}
+  .sp-confetti{position:absolute;inset:0;pointer-events:none;overflow:hidden}
+  .sp-piece{position:absolute;width:8px;height:12px;background:#22d3ee;opacity:.95;transform:rotate(15deg);animation:sp-fall 1.4s ease-out forwards}
+  @keyframes sp-fall{to{transform:translateY(120vh) rotate(360deg);opacity:0}}
+  @media (max-width:900px){ .sp-body{grid-template-columns:1fr} .sp-term{height:180px} }
+</style>
+
+<div class="sp-overlay" id="spOverlay" aria-hidden="true">
+  <div class="sp-card">
+    <div class="sp-head">
+      <div class="sp-lock sp-spin">🔒</div>
+      <div>
+        <div style="font-weight:800">Secure Pay — Encryption In Progress</div>
+        <div id="spMeta" style="font-size:13px;color:var(--muted)">Initializing…</div>
+      </div>
+    </div>
+    <div class="sp-body">
+      <div class="sp-status">
+        <div class="sp-row">
+          <div style="width:36px;height:36px;border-radius:8px;background:linear-gradient(90deg,#22d3ee,#0ea5a0);display:grid;place-items:center">HT</div>
+          <div style="font-weight:700">HopeToken Secure Channel</div>
+        </div>
+        <div id="spSteps">
+          <div class="sp-step" data-step="1"><div class="dot"></div><div class="label">Key Exchange</div></div>
+          <div class="sp-step" data-step="2"><div class="dot"></div><div class="label">Derive Secret</div></div>
+          <div class="sp-step" data-step="3"><div class="dot"></div><div class="label">Encrypt (AES-GCM)</div></div>
+          <div class="sp-step" data-step="4"><div class="dot"></div><div class="label">Sign TX</div></div>
+          <div class="sp-step" data-step="5"><div class="dot"></div><div class="label">Broadcast</div></div>
+          <div class="sp-step" data-step="6"><div class="dot"></div><div class="label">Confirmations</div></div>
+        </div>
+        <div style="margin-top:10px" id="spHint" class="muted">Starting…</div>
+        <div style="margin-top:10px" class="sp-bar"><div id="spBar"></div></div>
+      </div>
+
+      <div>
+        <div class="sp-term" id="spTerm">[secure-pay] ready</div>
+        <div class="sp-aes" id="spAes">
+          <!-- AES blocks -->
+          <div class="sp-block"></div><div class="sp-block"></div><div class="sp-block"></div><div class="sp-block"></div>
+          <div class="sp-block"></div><div class="sp-block"></div><div class="sp-block"></div><div class="sp-block"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="sp-foot">
+      <div class="sp-success" id="spSuccess"><div style="width:20px;height:20px;border-radius:6px;background:#86efac;color:#052014;display:grid;place-items:center">✓</div> Transfer confirmed — tx recorded</div>
+      <div style="display:flex;gap:8px">
+        <button class="sp-close" id="spCancel">Cancel</button>
+        <button class="sp-primary" id="spOk" style="display:none">Done</button>
+      </div>
+    </div>
+
+    <div class="sp-confetti" id="spConfetti"></div>
+  </div>
+</div>
+<!-- ===== SECURE PAY COMPONENT END ===== -->
+
+<script>
+/* ---------------- Utility & storage ---------------- */
+const STORAGE_KEY = "hopetoken_demo_v1";
+const el = id => document.getElementById(id);
+
+function load(){ try{return JSON.parse(localStorage.getItem(STORAGE_KEY)||'[]')}catch(e){return []} }
+function save(list){ localStorage.setItem(STORAGE_KEY, JSON.stringify(list)); }
+
+/* ---------------- Smooth scroll ---------------- */
+function scrollToId(id){ document.getElementById(id).scrollIntoView({behavior:'smooth'}) }
+
+/* ---------------- Counters & UI updates ---------------- */
+function updateCounters(){
+  const list = load();
+  const total = list.reduce((s,i)=>s + Number(i.amount||0),0);
+  const donors = new Set(list.map(d=>d.email)).size;
+  el('totalAmt').innerText = '₹' + total.toLocaleString();
+  el('donorCount').innerText = donors;
+  el('txCount').innerText = list.length;
+}
+function renderFeed(){
+  const feed = el('liveFeed'); feed.innerHTML = '';
+  const list = load().slice().sort((a,b)=>b.ts-a.ts);
+  for(const d of list){
+    const item = document.createElement('div'); item.className = 'item';
+    item.innerHTML = `<strong>${escapeHtml(d.name)}</strong> donated <strong>₹${Number(d.amount).toLocaleString()}</strong> for <em>${escapeHtml(d.purpose)}</em>
+      <div style="color:var(--muted);font-size:12px">${new Date(d.ts).toLocaleString()} • ${escapeHtml(d.message||'')}</div>`;
+    feed.appendChild(item);
+  }
+  renderLeaderboard();
+}
+function renderLeaderboard(){
+  const tbody = document.querySelector('#leaderboard tbody'); tbody.innerHTML = '';
+  const list = load();
+  const map = {};
+  for(const d of list){ map[d.email] = map[d.email] || {name:d.name,total:0}; map[d.email].total += Number(d.amount||0) }
+  const rows = Object.values(map).sort((a,b)=>b.total-a.total).slice(0,20);
+  for(const r of rows){ const tr=document.createElement('tr'); tr.innerHTML = `<td>${escapeHtml(r.name)}</td><td>₹${Number(r.total).toLocaleString()}</td>`; tbody.appendChild(tr) }
+}
+function escapeHtml(s){ return String(s||'').replaceAll('&','&amp;').replaceAll('<','&lt;').replaceAll('>','&gt;') }
+
+/* ---------------- Signup / Login validation ---------------- */
+function validEmail(e){ if(!e||e.length<8) return false; const re=/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/i; return re.test(e); }
+function validPassword(p){ if(!p||p.length<8) return false; const hasUpper=/[A-Z]/.test(p); const hasLower=/[a-z]/.test(p); const hasNum=/\d/.test(p); const hasSpec=/[@#$!%*?&]/.test(p); return hasUpper && hasLower && hasNum && hasSpec; }
+
+el('btnSignup').addEventListener('click', ()=>{
+  const name = el('name').value.trim();
+  const email = el('email').value.trim();
+  const pass = el('password').value;
+  el('errName').style.display = name? 'none':'block';
+  el('errEmail').style.display = validEmail(email)? 'none':'block';
+  el('errPass').style.display = validPassword(pass)? 'none':'block';
+  if(!name||!validEmail(email)||!validPassword(pass)) return;
+  // demo: store current user in sessionStorage (not secure)
+  sessionStorage.setItem('ht_user', JSON.stringify({name,email}));
+  el('authMsg').style.display = 'block'; el('authMsg').className='alert ok'; el('authMsg').innerText = 'Signed up & logged in (demo)';
+});
+el('btnLogin').addEventListener('click', ()=>{
+  const name = el('name').value.trim() || 'Guest';
+  const email = el('email').value.trim(); const pass = el('password').value;
+  if(!validEmail(email) || pass.length===0){ el('authMsg').style.display='block'; el('authMsg').className='alert err'; el('authMsg').innerText='Invalid login (demo)'; return }
+  sessionStorage.setItem('ht_user', JSON.stringify({name,email}));
+  el('authMsg').style.display='block'; el('authMsg').className='alert ok'; el('authMsg').innerText='Logged in (demo)';
+});
+
+/* ---------------- Donation flow (calls secure pay) ---------------- */
+el('btnDonate').addEventListener('click', ()=>{
+  const user = JSON.parse(sessionStorage.getItem('ht_user')||'null');
+  const amount = Number(el('amount').value||0);
+  const purpose = el('purpose').value;
+  const message = el('message').value.trim();
+  el('donateError').style.display='none';
+  if(!user){ el('donateError').style.display='block'; el('donateError').innerText='Please sign up / login first (demo)'; return; }
+  if(!amount || amount < 10){ el('donateError').style.display='block'; el('donateError').innerText='Enter amount ≥ ₹10'; return; }
+  // call secure pay simulator; on success, record donation
+  startSecurePay({from:(user.email||'demo'), to:'hopetoken_splitter', token:'HTKN', amount}).then(txhash=>{
+    // txhash is demo string; save donation record
+    const list = load();
+    list.push({id:'d_'+Date.now(), name:user.name, email:user.email, amount, purpose, message, ts:Date.now(), txhash});
+    save(list); updateCounters(); renderFeed();
+    el('donateAlert').style.display='block'; el('donateAlert').innerText='Donation recorded (demo) — tx: '+txhash;
+    setTimeout(()=> el('donateAlert').style.display='none',4000);
+    el('amount').value=''; el('message').value='';
+  }).catch(err=>{
+    el('donateError').style.display='block'; el('donateError').innerText = 'Payment cancelled or failed';
+  });
+});
+
+/* split preview */
+el('btnSplitPreview').addEventListener('click', ()=>{
+  const amount = Number(el('amount').value||0);
+  if(!amount){ alert('Enter amount to preview split'); return; }
+  const f = Math.round(amount*0.5), e=Math.round(amount*0.3), s=Math.round(amount*0.2);
+  alert(`Split preview:\n• Food: ₹${f}\n• Education: ₹${e}\n• Savings: ₹${s}`);
+});
+
+/* crypto quick buttons */
+el('btnCryptoQuick').addEventListener('click', ()=> {
+  el('fromAddr').value='hopetoken1quick';
+  el('token').value='HTKN';
+  el('cryptoAmount').value = 50;
+  el('btnCryptoPay').click();
+});
+
+/* secure pay trigger from Crypto section */
+el('btnCryptoPay').addEventListener('click', ()=>{
+  const from = el('fromAddr').value || 'hopetoken1demo';
+  const token = el('token').value || 'HTKN';
+  const amount = Number(el('cryptoAmount').value || 0);
+  if(!amount || amount <= 0){ alert('Enter crypto amount'); return; }
+  startSecurePay({from, to:'hopetoken_splitter', token, amount}).then(txhash=>{
+    // record a crypto-style donation (convert token units to INR-ish demo)
+    const list = load(); list.push({id:'c_'+Date.now(), name:'Wallet Donor', email:'wallet@local', amount: Math.round(amount*80), purpose:'Crypto '+token, message:'on-chain demo tx', ts:Date.now(), txhash});
+    save(list); updateCounters(); renderFeed();
+    alert('Crypto simulated and recorded — tx: '+txhash);
+  }).catch(()=>alert('Crypto transfer cancelled'));
+});
+
+/* CSV export & clear */
+el('exportCSV').addEventListener('click', ()=>{
+  const list = load();
+  const rows=[['name','email','amount','purpose','message','ts','txhash']];
+  for(const r of list) rows.push([r.name,r.email,r.amount,r.purpose,r.message,new Date(r.ts).toISOString(), r.txhash||'']);
+  const csv = rows.map(r=>r.map(v=>`"${String(v).replace(/"/g,'""')}"`).join(',')).join('\n');
+  const blob = new Blob([csv], {type:'text/csv'}); const url=URL.createObjectURL(blob); const a=document.createElement('a'); a.href=url; a.download='hopetoken_donations.csv'; a.click(); URL.revokeObjectURL(url);
+});
+el('clearData').addEventListener('click', ()=>{ if(confirm('Clear local demo data?')){ localStorage.removeItem(STORAGE_KEY); updateCounters(); renderFeed(); } });
+
+/* init sample data if empty */
+(function init(){
+  if(!localStorage.getItem(STORAGE_KEY)){
+    const seed = [
+      {id:'s1',name:'Asha',email:'asha@example.com',amount:500,purpose:'Food',message:'For kids',ts:Date.now()-86400000,txhash:'seed1'},
+      {id:'s2',name:'Rahul',email:'rahul@example.com',amount:1200,purpose:'Education',message:'Books',ts:Date.now()-43200000,txhash:'seed2'},
+      {id:'s3',name:'Priya',email:'priya@example.com',amount:800,purpose:'Medical',message:'Medicines',ts:Date.now()-7200000,txhash:'seed3'}
+    ];
+    save(seed);
+  }
+  updateCounters(); renderFeed();
+})();
+
+/* ---------------- Secure Pay Component Implementation ----------------
+   This function drives the modal animation and returns a Promise that
+   resolves with a demo txhash when complete, or rejects if cancelled.
+*/
+function startSecurePay({from='me', to='splitter', token='HTKN', amount=100}={}){
+  return new Promise(async (resolve,reject)=>{
+    const overlay = el('spOverlay'), term = el('spTerm'), meta = el('spMeta'), hint = el('spHint'), bar = el('spBar'), success = el('spSuccess'), okBtn = el('spOk'), confetti = el('spConfetti');
+    overlay.style.display='flex'; overlay.setAttribute('aria-hidden','false'); term.innerHTML='[secure-pay] starting';
+    meta.textContent = `From: ${from} → To: ${to} • ${token} ${amount}`;
+    success.style.display='none'; okBtn.style.display='none'; confetti.innerHTML='';
+    document.querySelectorAll('#spSteps .sp-step').forEach(s=>{s.classList.remove('active','done')}); bar.style.width='0%';
+    const wait = ms => new Promise(r=>setTimeout(r,ms));
+    const randHash = ()=>{ const b = crypto.getRandomValues(new Uint8Array(16)); return Array.from(b).map(x=>x.toString(16).padStart(2,'0')).join('') };
+
+    function write(text,cls){ const d = document.createElement('div'); if(cls) d.className=cls; d.textContent = text; term.appendChild(d); term.scrollTop = term.scrollHeight; }
+
+    function setStep(n,state){
+      document.querySelectorAll('#spSteps .sp-step').forEach(step=>{
+        const id = +step.dataset.step;
+        step.classList.toggle('active', id===n && state!=='done');
+        if(id < n || state==='done') step.classList.add('done'); 
+      });
+      bar.style.width = Math.min((n-1)*16 + (state==='done'?16:6), 100) + '%';
+    }
+
+    // sequence
+    try{
+      // 1: key exchange
+      setStep(1,'active'); hint.textContent='Exchanging ECDH keys…'; write('[kx] client_pub = '+randHash()); await wait(300);
+      write('[kx] server_pub = '+randHash()); await wait(260); write('[kx] OK','sp-ok'); setStep(1,'done');
+
+      // 2: derive secret
+      setStep(2,'active'); hint.textContent='Deriving shared secret…';
+      for(let i=0;i<3;i++){ write(`[kdf] h${i+1} = ${randHash()}`); await wait(220) }
+      write('[kdf] secret ready','sp-ok'); setStep(2,'done');
+
+      // 3: encrypt
+      setStep(3,'active'); hint.textContent='Encrypting (AES-GCM)…';
+      for(let i=0;i<4;i++){ write(`[aes] block ${i+1} = ${randHash()}`); await wait(160) }
+      write('[aes] ciphertext ok','sp-ok'); setStep(3,'done');
+
+      // 4: sign
+      setStep(4,'active'); hint.textContent='Signing transaction…'; write('[sig] signature = '+randHash()); await wait(420);
+      write('[sig] OK','sp-ok'); setStep(4,'done');
+
+      // 5: broadcast
+      setStep(5,'active'); hint.textContent='Broadcasting to network…';
+      write('[p2p] peers: 68'); await wait(260); write('[p2p] txHash = '+randHash(),'sp-ok'); await wait(360); setStep(5,'done');
+
+      // 6: confirmations
+      setStep(6,'active'); hint.textContent='Waiting confirmations…';
+      for(let i=1;i<=3;i++){ write(`[chain] confirmation ${i}/3 ✓`,'sp-ok'); await wait(380) }
+      setStep(6,'done'); hint.textContent='Complete';
+
+      // show success + confetti
+      success.style.display='flex'; okBtn.style.display='inline-block';
+      for(let i=0;i<40;i++){
+        const p = document.createElement('div'); p.className='sp-piece';
+        p.style.left = (Math.random()*100)+'%'; p.style.top='-10vh'; p.style.background = (i%2? '#22d3ee' : '#0ea5a0');
+        p.style.animationDelay = (Math.random()*0.8)+'s'; confetti.appendChild(p);
+      }
+      const demoTx = 'tx_'+randHash();
+      // allow user to click Done or auto-resolve after short delay
+      okBtn.onclick = ()=>{ overlay.style.display='none'; overlay.setAttribute('aria-hidden','true'); resolve(demoTx); };
+      el('spCancel').onclick = ()=>{ overlay.style.display='none'; overlay.setAttribute('aria-hidden','true'); reject(new Error('cancelled'))};
+      // auto-close after 2s
+      setTimeout(()=>{ overlay.style.display='none'; overlay.setAttribute('aria-hidden','true'); resolve(demoTx); }, 2500);
+    }catch(err){ overlay.style.display='none'; overlay.setAttribute('aria-hidden','true'); reject(err) }
+  });
+}
+</script>
+</body>
+</html>
+

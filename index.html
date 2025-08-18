@@ -1,0 +1,314 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>HopeToken — Transparent Giving </title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;500;700;800&display=swap" rel="stylesheet">
+<link href="styles.css" rel="stylesheet">
+</head>
+<body>
+
+<header>
+  <div class="nav">
+    <div class="brand">
+      <div class="logo">HT</div>
+      <div>
+        <div style="font-weight:800">HopeToken</div>
+        <div style="font-size:12px;color:var(--muted)">Blockchain · AI · Transparency</div>
+      </div>
+    </div>
+
+    <nav>
+      <a href="#home">Home</a>
+      <a href="#about">About</a>
+      <a href="#features">Features</a>
+      <a href="#donate">Donate</a>
+      <a href="#crypto">CryptoPay</a>
+      <a href="#feed">Feed</a>
+      <a href="#rewards">Rewards</a>
+    </nav>
+
+    <div style="display:flex;gap:8px">
+      <button class="cta" onclick="scrollToId('donate')">Donate</button>
+    </div>
+  </div>
+</header>
+
+<!-- HERO -->
+<section id="home" class="hero">
+  <div class="panel">
+    <span class="tag">Andromeda • ADOs • CW20 & CW721</span>
+    <h1>HopeToken — Transparent funding & fractional ownership for orphanages</h1>
+    <p class="lead">Use blockchain + AI to track donations, distribute funds automatically, and reward donors with hope — and proof.</p>
+
+    <div class="stats">
+      <div class="stat"><div class="big" id="totalAmt">₹0</div><div class="muted">Total Donated</div></div>
+      <div class="stat"><div class="big" id="donorCount">0</div><div class="muted">Donors</div></div>
+      <div class="stat"><div class="big" id="txCount">0</div><div class="muted">Transactions</div></div>
+      <div class="stat"><div class="big" id="txCount">7</div><div class="muted">Orphanages Supported</div></div>
+    </div>
+  </div>
+
+  <div class="panel" style="display:flex;flex-direction:column;gap:10px;justify-content:center">
+    <div style="display:flex;align-items:center;gap:12px">
+      <div style="width:64px;height:64px;border-radius:12px;background:linear-gradient(180deg,#0ea5a0,#22d3ee);display:grid;place-items:center;font-weight:900;color:#012425">H</div>
+      <div>
+        <div style="font-weight:800">HopeToken Prototype</div>
+        <div class="muted" style="font-size:13px">Demo-ready UI — local simulation</div>
+      </div>
+    </div>
+    <div class="muted">Features: NFT identities, CW20 HopeTokens, Crowdfund, Splitters, Merkle rewards, AI dashboard</div>
+    <div style="display:flex;gap:8px;margin-top:8px">
+      <button class="btn" onclick="scrollToId('donate')">Try Donate</button>
+      <button class="btn secondary" onclick="scrollToId('features')">See Features</button>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about" class="section">
+  <div class="panel">
+    <h2>About HopeToken</h2>
+    <p class="muted">HopeToken uses blockchain and AI to build trust between donors and orphanages. Donors receive fractional tokens representing their impact, while smart contracts ensure automatic and transparent fund allocation.Ensure every donation is tracked and verifiable on the blockchain. Allow micro-contributions without minimum limits. Provide orphanages with smart tools for resource planning. : Strengthen emotional connection through direct impact visibility. HopeToken redefines charitable giving by making it transparent, accountable, and interactive. With blockchain ensuring trust, AI providing data-driven insights, and fractional tokens giving donors tangible proof of impact, it can bridge the gap between generosity and measurable change.</p>
+  </div>
+</section>
+
+<!-- FEATURES -->
+<section id="features" class="section">
+  <h2>Key Features</h2>
+  <div class="grid-3" style="margin-top:12px">
+    
+    <!-- Existing Features -->
+    <div class="panel">
+      <h3>Tokenized Identity</h3>
+      <p class="muted">Orphanages get an immutable NFT profile (CW721) that stores identity and proof.</p>
+    </div>
+    
+    <div class="panel">
+      <h3>HopeTokens (CW20)</h3>
+      <p class="muted">Donors receive CW20 tokens as proof-of-contribution and governance rights.</p>
+    </div>
+    
+    <div class="panel">
+      <h3>Automatic Splitters</h3>
+      <p class="muted">Splitter ADOs automatically divide incoming funds into food, education, medical, savings.</p>
+    </div>
+    
+    <!--  Features -->
+    <div class="panel">
+      <h3>AI Impact Dashboard</h3>
+      <p class="muted">Real-time analytics show urgent needs, funding trends, and impact reports for each orphanage.</p>
+    </div>
+    
+    <div class="panel">
+      <h3>Volunteer Rewards</h3>
+      <p class="muted">Volunteers earn NFT badges or bonus HopeTokens for contributing skills or time.</p>
+    </div>
+    
+    <div class="panel">
+      <h3>Transparent CSR Reports</h3>
+      <p class="muted">Corporate sponsors can download blockchain-verified reports for compliance and PR use.</p>
+    </div>
+    
+  </div>
+</section>
+
+<!-- DONATE + AUTH -->
+<section id="donate" class="section">
+  <h2>Sign up & Donate</h2>
+  <div class="grid-2" style="margin-top:12px">
+    <!-- left: auth form -->
+    <div class="panel">
+      <h3>Create Account / Login</h3>
+      <div class="muted">UI validation </div>
+
+      <label>Name</label>
+      <input id="name" placeholder="Full name (required)">
+
+      <div id="errName" class="alert err" style="display:none">Name is required.</div>
+
+      <label>Email</label>
+      <input id="email" placeholder="you@example.com">
+      <div id="errEmail" class="alert err" style="display:none">Email invalid (≥8 chars and proper format).</div>
+
+      <label>Password</label>
+      <input id="password" type="password" placeholder="Strong password">
+      <div id="errPass" class="alert err" style="display:none">Password must be ≥8 chars and include Upper, lower, number, special (@#$!%*?&).</div>
+
+      <div style="display:flex;gap:8px;margin-top:10px">
+        <button class="btn" id="btnSignup">Sign Up</button>
+        <button class="btn secondary" id="btnLogin">Login</button>
+      </div>
+
+      <div style="margin-top:12px;display:flex;gap:8px">
+        <button class="btn secondary" title="UI only">Google</button>
+        <button class="btn secondary" title="UI only">LinkedIn</button>
+        <button class="btn secondary" title="UI only">Microsoft</button>
+      </div>
+
+      <div id="authMsg" class="alert ok" style="display:none;margin-top:12px"></div>
+    </div>
+
+    <!-- right: donation -->
+    <div class="panel">
+      <h3>Donation</h3>
+      <label>Amount (₹)</label>
+      <input id="amount" type="number" min="10" placeholder="e.g., 500">
+
+      <label>Purpose</label>
+      <select id="purpose">
+        <option>Food</option>
+        <option>Medical</option>
+        <option>Education</option>
+        <option>Savings</option>
+      </select>
+
+      <label>Message (optional)</label>
+      <textarea id="message" rows="2" placeholder="A short note..."></textarea>
+
+      <div style="display:flex;gap:8px;margin-top:12px">
+        <button class="btn" id="btnDonate">Donate (Secure Pay)</button>
+        <button class="btn secondary" id="btnSplitPreview">Show Split</button>
+      </div>
+
+      <div id="donateAlert" style="margin-top:12px;display:none" class="alert ok"></div>
+      <div id="donateError" style="margin-top:12px;display:none" class="alert err"></div>
+
+      <div style="margin-top:12px" class="muted">Demo: donations stored locally and feed updates in real time. Use Export to download CSV.</div>
+    </div>
+  </div>
+</section>
+
+<!-- CRYPTO PAY (Secure Pay component will display modal and run animation) -->
+<section id="crypto" class="section">
+  <h2>CryptoPay Simulator</h2>
+  <div class="panel">
+    <div style="display:flex;gap:12px;align-items:center">
+      <div style="flex:1">
+        <label>From (public key)</label>
+        <input id="fromAddr" placeholder="hopetoken1user..." />
+      </div>
+      <div style="width:220px">
+        <label>Token</label>
+        <select id="token">
+          <option>HTKN</option><option>ATOM</option><option>USDC</option>
+        </select>
+      </div>
+      <div style="width:140px">
+        <label>Amount</label>
+        <input id="cryptoAmount" type="number" min="1" />
+      </div>
+    </div>
+
+    <div style="display:flex;gap:8px;margin-top:12px">
+      <button class="btn" id="btnCryptoPay">Secure Pay (simulate)</button>
+      <button class="btn secondary" id="btnCryptoQuick">CryptoQuick</button>
+    </div>
+
+    <div style="margin-top:12px" class="muted">This simulates encryption, signing and broadcast. A demo txHash will be recorded on success.</div>
+  </div>
+</section>
+
+<!-- FEED & LEADERBOARD -->
+<section id="feed" class="section">
+  <h2>Live Feed & Leaderboard</h2>
+  <div style="display:grid;grid-template-columns:1fr 340px;gap:12px;margin-top:12px">
+    <div class="panel feed" id="liveFeed"></div>
+    <div class="panel">
+      <h4>Leaderboard</h4>
+      <div style="max-height:300px;overflow:auto">
+        <table id="leaderboard"><thead><tr><th>Donor</th><th>Total (₹)</th></tr></thead><tbody></tbody></table>
+      </div>
+      <div style="display:flex;gap:8px;margin-top:12px">
+        <button class="btn" id="exportCSV">Export CSV</button>
+        <button class="btn secondary" id="clearData">Clear Local Data</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- REWARDS -->
+<section id="rewards" class="section">
+  <h2>Rewards & Incentives</h2>
+  <p class="muted" style="max-width:800px;margin:auto;margin-bottom:20px;text-align:center;">
+    HopeToken rewards both donors and volunteers for their support, making contributions more engaging and impactful.
+    Rewards are designed to build long-term relationships and encourage continued participation.
+  </p>
+
+  <div class="grid-3" style="margin-top:12px">
+    
+    <div class="panel">
+      <h3>NFT Badges</h3>
+      <p class="muted">Unique blockchain-based achievement badges for donations, volunteering, and special campaigns.</p>
+    </div>
+
+    <div class="panel">
+      <h3>Bonus HopeTokens</h3>
+      <p class="muted">Extra HopeTokens for early donors, recurring supporters, or meeting funding milestones.</p>
+    </div>
+
+    <div class="panel">
+      <h3>Exclusive Access</h3>
+      <p class="muted">Invitations to private updates, donor-only events, and decision-making polls for project priorities.</p>
+    </div>
+
+  </div>
+</section>
+
+<footer>© 2025 HopeToken. Built with love • Upgrade to real blockchain & IPFS for production.</footer>
+
+<!-- ===== SECURE PAY COMPONENT (modal markup) ===== -->
+<div class="sp-overlay" id="spOverlay" aria-hidden="true">
+  <div class="sp-card">
+    <div class="sp-head">
+      <div class="sp-lock sp-spin">🔒</div>
+      <div>
+        <div style="font-weight:800">Secure Pay — Encryption In Progress</div>
+        <div id="spMeta" style="font-size:13px;color:var(--muted)">Initializing…</div>
+      </div>
+    </div>
+    <div class="sp-body">
+      <div class="sp-status">
+        <div class="sp-row">
+          <div style="width:36px;height:36px;border-radius:8px;background:linear-gradient(90deg,#22d3ee,#0ea5a0);display:grid;place-items:center">HT</div>
+          <div style="font-weight:700">HopeToken Secure Channel</div>
+        </div>
+        <div id="spSteps">
+          <div class="sp-step" data-step="1"><div class="dot"></div><div class="label">Key Exchange</div></div>
+          <div class="sp-step" data-step="2"><div class="dot"></div><div class="label">Derive Secret</div></div>
+          <div class="sp-step" data-step="3"><div class="dot"></div><div class="label">Encrypt (AES-GCM)</div></div>
+          <div class="sp-step" data-step="4"><div class="dot"></div><div class="label">Sign TX</div></div>
+          <div class="sp-step" data-step="5"><div class="dot"></div><div class="label">Broadcast</div></div>
+          <div class="sp-step" data-step="6"><div class="dot"></div><div class="label">Confirmations</div></div>
+        </div>
+        <div style="margin-top:10px" id="spHint" class="muted">Starting…</div>
+        <div style="margin-top:10px" class="sp-bar"><div id="spBar"></div></div>
+      </div>
+
+      <div>
+        <div class="sp-term" id="spTerm">[secure-pay] ready</div>
+        <div class="sp-aes" id="spAes">
+          <!-- AES blocks -->
+          <div class="sp-block"></div><div class="sp-block"></div><div class="sp-block"></div><div class="sp-block"></div>
+          <div class="sp-block"></div><div class="sp-block"></div><div class="sp-block"></div><div class="sp-block"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="sp-foot">
+      <div class="sp-success" id="spSuccess"><div style="width:20px;height:20px;border-radius:6px;background:#86efac;color:#052014;display:grid;place-items:center">✓</div> Transfer confirmed — tx recorded</div>
+      <div style="display:flex;gap:8px">
+        <button class="sp-close" id="spCancel">Cancel</button>
+        <button class="sp-primary" id="spOk" style="display:none">Done</button>
+      </div>
+    </div>
+
+    <div class="sp-confetti" id="spConfetti"></div>
+  </div>
+</div>
+<!-- ===== SECURE PAY COMPONENT END ===== -->
+
+<script src="app.js" defer></script>
+</body>
+</html>
