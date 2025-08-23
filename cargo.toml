@@ -1,0 +1,24 @@
+[package]
+name = "cw20_hope_token"
+version = "0.1.0"
+edition = "2021"
+
+[lib]
+crate-type = ["cdylib"]
+
+[dependencies]
+cosmwasm-std = "1.0"
+cosmwasm-storage = "1.0"
+serde = { version = "1.0", features = ["derive"] }
+cw0 = "0.10"
+[package]
+name = "cw721_orphanage"
+version = "0.1.0"
+edition = "2021"
+
+[lib]
+crate-type = ["cdylib"]
+
+[dependencies]
+cosmwasm-std = "1.0"
+serde = { version = "1.0", features = ["derive"] }
