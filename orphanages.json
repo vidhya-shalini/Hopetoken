@@ -1,0 +1,24 @@
+{
+  "orphanages": [
+    {
+      "id": "o1",
+      "name": "Hope Home",
+      "description": "Supports 30 children",
+      "image": "https://via.placeholder.com/300",
+      "raised": 0,
+      "goal": 50000
+    },
+    {
+      "id": "o2",
+      "name": "Sunrise Shelter",
+      "description": "Daycare & schooling",
+      "image": "https://via.placeholder.com/300",
+      "raised": 0,
+      "goal": 75000
+    }
+  ],
+  "wallets": [
+    { "id": 1, "name": "Sunrise Home", "location": "City A", "wallet": "0xAbc...123" },
+    { "id": 2, "name": "Hope Shelter", "location": "City B", "wallet": "0xDef...456" }
+  ]
+}
