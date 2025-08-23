@@ -1,90 +1,100 @@
-:root{
-  --bg:#071322; --card:#0b1b2a; --glass:rgba(255,255,255,0.03);
-  --brand:#0ea5a0; --accent:#ffb703; --muted:#9fb9cf; --good:#22c55e; --danger:#ef4444;
-}
-*{box-sizing:border-box}
-html,body{height:100%;margin:0;font-family:Inter,system-ui,Segoe UI,Arial,sans-serif;background:
-  radial-gradient(1200px 600px at 10% 10%, rgba(14,165,160,0.06), transparent 8%),
-  linear-gradient(180deg,var(--bg),#031021 120%);color:#e6f7ff}
-a{color:inherit}
-header{position:sticky;top:0;background:linear-gradient(90deg,rgba(255,255,255,0.02),transparent);backdrop-filter: blur(6px);z-index:20}
-.nav{max-width:1150px;margin:auto;padding:12px 18px;display:flex;align-items:center;justify-content:space-between;gap:10px}
-.brand{display:flex;align-items:center;gap:10px}
-.logo{width:40px;height:40px;border-radius:10px;background:conic-gradient(from 180deg,var(--brand),#22d3ee,#22c55e);display:grid;place-items:center;font-weight:800;color:#012425}
-nav a{margin:0 8px;padding:8px 10px;border-radius:8px;font-weight:600;color:#cfeef7}
-nav a:hover{background:rgba(255,255,255,0.03)}
-.cta{background:var(--brand);color:#012425;border:none;padding:8px 12px;border-radius:10px;font-weight:700;cursor:pointer}
-
-/* Hero */
-.hero{max-width:1150px;margin:26px auto;padding:28px;display:grid;grid-template-columns:1.2fr .8fr;gap:18px}
-.panel{background:var(--card);border-radius:14px;padding:18px;border:1px solid rgba(255,255,255,0.03)}
-.tag{display:inline-block;padding:6px 10px;border-radius:999px;background:rgba(255,255,255,0.02);font-size:13px;color:var(--muted)}
-h1{font-size:32px;margin:12px 0 6px}
-p.lead{color:var(--muted);margin-bottom:14px}
-
-.stats{display:flex;gap:10px;margin-top:12px}
-.stat{flex:1;background:linear-gradient(180deg,rgba(255,255,255,0.02),transparent);padding:12px;border-radius:10px;text-align:center}
-.stat .big{font-size:20px;font-weight:800}
-
-/* Sections */
-.section{max-width:1150px;margin:20px auto;padding:0 18px}
-.grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
-.grid-2{display:grid;grid-template-columns:1fr 380px;gap:14px}
-.muted{color:var(--muted)}
-.chip{display:inline-block;padding:6px 10px;border-radius:999px;border:1px solid rgba(255,255,255,0.03);font-size:13px;color:#dff7fb}
-
-/* Form styles */
-label{display:block;font-size:13px;color:var(--muted);margin-top:10px}
-input,select,textarea,button{width:100%;padding:10px;border-radius:10px;border:1px solid rgba(255,255,255,0.04);background:transparent;color:#e6f7ff;outline:none}
-input:focus,select:focus,textarea:focus{box-shadow:0 0 0 6px rgba(14,165,160,0.08);border-color:rgba(14,165,160,0.6)}
-.row{display:flex;gap:10px}
-.row .half{flex:1}
-.btn{background:var(--brand);border:none;padding:10px 12px;border-radius:10px;color:#012425;font-weight:800;cursor:pointer}
-.btn.secondary{background:transparent;border:1px solid rgba(255,255,255,0.04);color:var(--muted)}
-.alert{padding:8px;border-radius:8px;margin-top:8px;font-size:13px}
-
-.ok{background:rgba(34,197,94,0.12);color:var(--good);border:1px solid rgba(34,197,94,0.12)}
-.err{background:rgba(239,68,68,0.08);color:var(--danger);border:1px solid rgba(239,68,68,0.08)}
-
-/* Feed/leaderboard */
-.feed{background:linear-gradient(180deg,rgba(255,255,255,0.01),transparent);border-radius:12px;padding:8px;max-height:360px;overflow:auto;border:1px solid rgba(255,255,255,0.03)}
-.feed .item{padding:10px;border-bottom:1px dashed rgba(255,255,255,0.02)}
-table{width:100%;border-collapse:collapse}
-th,td{padding:8px;border-bottom:1px dashed rgba(255,255,255,0.02);text-align:left}
-
-/* Crypto Secure Pay component styles */
-footer{max-width:1150px;margin:40px auto;padding:20px 18px;color:var(--muted);text-align:center}
-
-/* Responsive */
-@media (max-width:980px){
-  .hero{grid-template-columns:1fr}
-  .grid-2{grid-template-columns:1fr}
-  .grid-3{grid-template-columns:1fr}
+body { 
+  font-family: Inter, system-ui, Arial; 
+  margin:0; 
+  background:#f4f7fb; 
+  color:#0b1b2a;
 }
 
-/* ------- Secure Pay styles (modal + animation) ------- */
-.sp-overlay{position:fixed;inset:0;background:rgba(2,12,24,.75);backdrop-filter:blur(6px);display:none;align-items:center;justify-content:center;z-index:9999}
-.sp-card{width:min(840px,96vw);background:#0b1422;border:1px solid rgba(255,255,255,.06);border-radius:14px;color:#e9f4ff;padding:12px;position:relative}
-.sp-head{display:flex;align-items:center;gap:12px;padding:8px;border-bottom:1px solid rgba(255,255,255,.04)}
-.sp-lock{width:44px;height:44px;border-radius:10px;background:conic-gradient(from 210deg,#0ea5a0,#22d3ee);display:grid;place-items:center;font-weight:900;color:#012425}
-.sp-body{display:grid;grid-template-columns:1fr 1fr;gap:12px;padding:12px}
-.sp-status{background:#071827;padding:12px;border-radius:10px;border:1px solid rgba(255,255,255,.03)}
-.sp-term{background:#020817;padding:10px;border-radius:8px;height:220px;overflow:auto;font-family:ui-monospace,Menlo,monospace;color:#bfe9ff;border:1px solid rgba(255,255,255,.03)}
-.sp-row{display:flex;align-items:center;gap:8px;margin:8px 0}
-.sp-step{display:flex;align-items:center;gap:10px;margin:8px 0}
-.dot{width:10px;height:10px;border-radius:10px;background:#29405f}
-.sp-step.active .dot{background:#0ea5a0;box-shadow:0 0 0 8px rgba(14,165,160,.12)}
-.sp-step.done .dot{background:#22c55e}
-.sp-bar{height:8px;background:#071827;border-radius:999px;overflow:hidden;border:1px solid rgba(255,255,255,.03)}
-.sp-bar>div{height:100%;width:0;background:linear-gradient(90deg,#22d3ee,#0ea5a0);transition:width .35s ease}
-.sp-aes{display:grid;grid-template-columns:repeat(8,1fr);gap:6px;margin-top:8px}
-.sp-block{height:18px;background:#102; border-radius:6px; box-shadow:0 4px 14px rgba(0,0,0,.5); animation:sp-glow 1.4s ease-in-out infinite alternate}
-@keyframes sp-glow{to{background:linear-gradient(90deg,#0ea5a0,#22d3ee)}}
-.sp-foot{display:flex;justify-content:space-between;align-items:center;padding:8px;border-top:1px solid rgba(255,255,255,.03)}
-.sp-close{background:#102535;color:#bfe9ff;border:1px solid rgba(255,255,255,.03);padding:8px 12px;border-radius:8px;cursor:pointer}
-.sp-primary{background:var(--brand);border:none;padding:8px 14px;border-radius:8px;color:#012425;font-weight:800;cursor:pointer}
-.sp-success{display:none;color:#86efac;align-items:center;gap:8px;font-weight:800}
-.sp-confetti{position:absolute;inset:0;pointer-events:none;overflow:hidden}
-.sp-piece{position:absolute;width:8px;height:12px;background:#22d3ee;opacity:.95;transform:rotate(15deg);animation:sp-fall 1.4s ease-out forwards}
-@keyframes sp-fall{to{transform:translateY(120vh) rotate(360deg);opacity:0}}
-@media (max-width:900px){ .sp-body{grid-template-columns:1fr} .sp-term{height:180px} }
+.container { 
+  max-width:1000px; 
+  margin:24px auto; 
+  padding:16px; 
+}
+
+.header { 
+  display:flex; 
+  justify-content:space-between; 
+  align-items:center; 
+}
+
+.grid { 
+  display:grid; 
+  grid-template-columns: repeat(auto-fit,minmax(260px,1fr)); 
+  gap:16px; 
+  margin-top:16px; 
+}
+
+.card { 
+  background:rgb(255, 255, 255); 
+  border-radius:12px; 
+  padding:12px; 
+  box-shadow:0 6px 18px rgba(10,20,30,0.06); 
+}
+
+.card img { 
+  width:100%; 
+  border-radius:8px; 
+  height:140px; 
+  object-fit:cover; 
+}
+
+.card-actions { 
+  margin-top:8px; 
+}
+
+button { 
+  background:#0b6ef6; 
+  color:white; 
+  border:none; 
+  padding:8px 12px; 
+  border-radius:8px; 
+  cursor:pointer; 
+}
+
+.modal { 
+  position:fixed; 
+  inset:0; 
+  display:flex; 
+  align-items:center; 
+  justify-content:center; 
+  background:rgba(0,0,0,0.4); 
+}
+
+.modal-content { 
+  background:white; 
+  padding:16px; 
+  border-radius:8px; 
+  width:320px; 
+}
+
+input { 
+  width:100%; 
+  padding:8px; 
+  margin:6px 0 12px; 
+  border-radius:6px; 
+  border:1px solid #ddd; 
+}
+
+/* 🎯 Fix for Purpose Dropdown */
+select {
+  width: 100%;
+  padding: 8px;
+  margin: 6px 0 12px;
+  border-radius: 6px;
+  border: 1px solid #ddd;
+  background-color: #ffffff;   /* white background */
+  color: #000000;              /* black text */
+  font-size: 14px;
+  cursor: pointer;
+}
+
+select option {
+  background-color: #ffffff;  /* dropdown list background */
+  color: #000000;             /* dropdown list text */
+}
+
+/* Optional hover effect */
+select option:hover {
+  background-color: #0b6ef6; /* blue highlight */
+  color: #ffffff;
+}
