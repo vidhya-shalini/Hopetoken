@@ -1,3 +1,4 @@
+
 <!doctype html>
 <html lang="en">
 <head>
@@ -13,13 +14,13 @@
   *{box-sizing:border-box}
   html,body{height:100%;margin:0;font-family:Inter,system-ui,Segoe UI,Arial,sans-serif;background:
     radial-gradient(1200px 600px at 10% 10%, rgba(14,165,160,0.06), transparent 8%),
-    linear-gradient(180deg,var(--bg),#031021 120%);color:#e6f7ff}
+    linear-gradient(180deg,var(--bg),#031021 120%);color:#22d3ee}
   a{color:inherit}
   header{position:sticky;top:0;background:linear-gradient(90deg,rgba(255,255,255,0.02),transparent);backdrop-filter: blur(6px);z-index:20}
   .nav{max-width:1150px;margin:auto;padding:12px 18px;display:flex;align-items:center;justify-content:space-between;gap:10px}
   .brand{display:flex;align-items:center;gap:10px}
   .logo{width:40px;height:40px;border-radius:10px;background:conic-gradient(from 180deg,var(--brand),#22d3ee,#22c55e);display:grid;place-items:center;font-weight:800;color:#012425}
-  nav a{margin:0 8px;padding:8px 10px;border-radius:8px;font-weight:600;color:#cfeef7}
+  nav a{margin:0 8px;padding:8px 10px;border-radius:8px;font-weight:600;color:#35899c}
   nav a:hover{background:rgba(255,255,255,0.03)}
   .cta{background:var(--brand);color:#012425;border:none;padding:8px 12px;border-radius:10px;font-weight:700;cursor:pointer}
 
@@ -45,6 +46,16 @@
   label{display:block;font-size:13px;color:var(--muted);margin-top:10px}
   input,select,textarea,button{width:100%;padding:10px;border-radius:10px;border:1px solid rgba(255,255,255,0.04);background:transparent;color:#e6f7ff;outline:none}
   input:focus,select:focus,textarea:focus{box-shadow:0 0 0 6px rgba(14,165,160,0.08);border-color:rgba(14,165,160,0.6)}
+  /* Fix Purpose Dropdown visibility */
+select option {
+  background-color: #ffffff;  /* white dropdown background */
+  color: #000000;             /* black text */
+}
+
+select option:hover {
+  background-color: var(--brand); /* aqua highlight */
+  color: #ffffff;
+}
   .row{display:flex;gap:10px}
   .row .half{flex:1}
   .btn{background:var(--brand);border:none;padding:10px 12px;border-radius:10px;color:#012425;font-weight:800;cursor:pointer}
@@ -52,19 +63,17 @@
   .alert{padding:8px;border-radius:8px;margin-top:8px;font-size:13px}
 
   .ok{background:rgba(34,197,94,0.12);color:var(--good);border:1px solid rgba(34,197,94,0.12)}
-  .err{background:rgba(239,68,68,0.08);color:var(--danger);border:1px solid rgba(239,68,68,0.08)}
+  .err{background:rgba(239,68,68,0.08);color:var(--danger);border:1px solid rgba(52, 22, 22, 0.08)}
 
   /* Feed/leaderboard */
   .feed{background:linear-gradient(180deg,rgba(255,255,255,0.01),transparent);border-radius:12px;padding:8px;max-height:360px;overflow:auto;border:1px solid rgba(255,255,255,0.03)}
   .feed .item{padding:10px;border-bottom:1px dashed rgba(255,255,255,0.02)}
   table{width:100%;border-collapse:collapse}
-  th,td{padding:8px;border-bottom:1px dashed rgba(255,255,255,0.02);text-align:left}
+  th,td{padding:8px;border-bottom:1px dashed rgba(192, 56, 56, 0.02);text-align:left}
 
   /* Crypto Secure Pay component included below uses its own styles (see later) */
 
-  footer{max-width:1150px;margin:40px auto;padding:20px 18px;color:var(--muted);text-align:center}
-
-  /* Responsive */
+ /* Responsive */
   @media (max-width:980px){
     .hero{grid-template-columns:1fr}
     .grid-2{grid-template-columns:1fr}
@@ -104,7 +113,7 @@
 <section id="home" class="hero">
   <div class="panel">
     <span class="tag">Andromeda • ADOs • CW20 & CW721</span>
-    <h1>HopeToken — Transparent funding & fractional ownership for orphanages</h1>
+    <h1>HopeToken for orphanages</h1>
     <p class="lead">Use blockchain + AI to track donations, distribute funds automatically, and reward donors with hope — and proof.</p>
 
     <div class="stats">
@@ -120,8 +129,8 @@
     <div style="display:flex;align-items:center;gap:12px">
       <div style="width:64px;height:64px;border-radius:12px;background:linear-gradient(180deg,#0ea5a0,#22d3ee);display:grid;place-items:center;font-weight:900;color:#012425">H</div>
       <div>
-        <div style="font-weight:800">HopeToken Prototype</div>
-        <div class="muted" style="font-size:13px">Demo-ready UI — local simulation</div>
+        <div style="font-weight:800">HopeToken</div>
+        <div class="muted" style="font-size:13px">local simulation</div>
       </div>
     </div>
     <div class="muted">Features: NFT identities, CW20 HopeTokens, Crowdfund, Splitters, Merkle rewards, AI dashboard</div>
@@ -241,7 +250,7 @@
       <div id="donateAlert" style="margin-top:12px;display:none" class="alert ok"></div>
       <div id="donateError" style="margin-top:12px;display:none" class="alert err"></div>
 
-      <div style="margin-top:12px" class="muted">Demo: donations stored locally and feed updates in real time. Use Export to download CSV.</div>
+      <div style="margin-top:12px" class="muted">donations stored locally and feed updates in real time. Use Export to download CSV.</div>
     </div>
   </div>
 </section>
@@ -322,8 +331,12 @@
   </div>
 </section>
 
-<footer>© 2025 HopeToken. Built with love • Upgrade to real blockchain & IPFS for production.</footer>
-<style>
+
+      <footer style="text-align:center;">
+  © 2025 HopeToken. Built with love • Upgrade to real blockchain & IPFS for production.
+</footer>
+
+     <style>
   
   /* Secure Pay styles (modal + animation) */
   .sp-overlay{position:fixed;inset:0;background:rgba(2,12,24,.75);backdrop-filter:blur(6px);display:none;align-items:center;justify-content:center;z-index:9999}
@@ -402,6 +415,8 @@
   </div>
 </div>
 <!-- ===== SECURE PAY COMPONENT END ===== -->
+ <script src="https://unpkg.com/@cosmjs/cosmwasm-stargate@0.30.1/build/cosmwasm-stargate.min.js"></script>
+
 
 <script>
 /* ---------------- Utility & storage ---------------- */
@@ -490,6 +505,38 @@ el('btnDonate').addEventListener('click', ()=>{
     el('donateError').style.display='block'; el('donateError').innerText = 'Payment cancelled or failed';
   });
 });
+const CW20_CONTRACT = "your_cw20_contract_address"; // Replace with real contract
+// Optional on-chain donate handler (safe: only runs if Keplr exists)
+document.getElementById("btnDonate").addEventListener("click", async () => {
+  try {
+    if (!window.keplr) return alert("⚠️ Connect wallet first!");
+
+    const chainId = "andromeda-testnet"; // correct chain ID
+    const offlineSigner = window.getOfflineSigner(chainId);
+    const client = await SigningCosmWasmClient.connectWithSigner(rpcEndpoint, offlineSigner);
+    const account = (await offlineSigner.getAccounts())[0];
+
+    // 1. Send 10 HTKN tokens
+    const msg = { transfer: { recipient: "orphanage_wallet_address", amount: "10" } };
+    await client.execute(account.address, hopeTokenCW20, msg, "auto");
+    alert("✅ Donation sent!");
+
+    // 2. Mint NFT Thank You badge
+    const nftMsg = {
+      mint: {
+        token_id: "donor_" + Date.now(),
+        owner: account.address,
+        token_uri: "https://youripfslink/thankyou.json",
+      },
+    };
+    await client.execute(account.address, nftCW721, nftMsg, "auto");
+    alert("🎉 NFT Thank You Badge Minted!");
+  } catch (err) {
+    console.error(err);
+    alert("❌ Transaction failed: " + err.message);
+  }
+});
+
 
 /* split preview */
 el('btnSplitPreview').addEventListener('click', ()=>{
@@ -499,13 +546,17 @@ el('btnSplitPreview').addEventListener('click', ()=>{
   alert(`Split preview:\n• Food: ₹${f}\n• Education: ₹${e}\n• Savings: ₹${s}`);
 });
 
-/* crypto quick buttons */
-el('btnCryptoQuick').addEventListener('click', ()=> {
-  el('fromAddr').value='hopetoken1quick';
-  el('token').value='HTKN';
-  el('cryptoAmount').value = 50;
-  el('btnCryptoPay').click();
-});
+// Donate Function (CW20 transfer)
+async function donate(amount) {
+  const client = await SigningCosmWasmClient.connectWithSigner(rpcEndpoint, signer);
+  await client.execute(
+    donorAddress,
+    hopeTokenCW20,
+    { transfer: { recipient: "orphanageWallet", amount: String(amount) } },
+    "auto"
+  );
+  alert("Donation successful!");
+}
 
 /* secure pay trigger from Crypto section */
 el('btnCryptoPay').addEventListener('click', ()=>{
@@ -610,11 +661,24 @@ function startSecurePay({from='me', to='splitter', token='HTKN', amount=100}={})
       okBtn.onclick = ()=>{ overlay.style.display='none'; overlay.setAttribute('aria-hidden','true'); resolve(demoTx); };
       el('spCancel').onclick = ()=>{ overlay.style.display='none'; overlay.setAttribute('aria-hidden','true'); reject(new Error('cancelled'))};
       // auto-close after 2s
-      setTimeout(()=>{ overlay.style.display='none'; overlay.setAttribute('aria-hidden','true'); resolve(demoTx); }, 2500);
-    }catch(err){ overlay.style.display='none'; overlay.setAttribute('aria-hidden','true'); reject(err) }
+            setTimeout(() => {
+        overlay.style.display = 'none';
+        overlay.setAttribute('aria-hidden','true');
+        resolve(demoTx);
+      }, 2500);
+    } catch(err) {
+      overlay.style.display='none';
+      overlay.setAttribute('aria-hidden','true');
+      reject(err);
+    }
   });
 }
+  
+ // Config
+const rpcEndpoint = "https://rpc.andromeda.network"; 
+const hopeTokenCW20 = "ado_contract_address_here"; 
+const nftCW721 = "ado_contract_address_here"; 
+
 </script>
 </body>
 </html>
-
