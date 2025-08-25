@@ -6,79 +6,6 @@
 <title>HopeToken — Transparent Giving </title>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;500;700;800&display=swap" rel="stylesheet">
 <link href="styles.css" rel="stylesheet">
-</head>
-<body>
-
-<header>
-  <div class="nav">
-    <div class="brand">
-      <div class="logo">HT</div>
-      <div>
-        <div style="font-weight:800">HopeToken</div>
-        <div style="font-size:12px;color:var(--muted)">Blockchain · AI · Transparency</div>
-      </div>
-    </div>
-
-    <nav>
-      <a href="#home">Home</a>
-      <a href="#about">About</a>
-      <a href="#features">Features</a>
-      <a href="#donate">Donate</a>
-      <a href="#crypto">CryptoPay</a>
-      <a href="#feed">Feed</a>
-      <a href="#rewards">Rewards</a>
-    </nav>
-
-    <div style="display:flex;gap:8px">
-      <button class="cta" onclick="scrollToId('donate')">Donate</button>
-    </div>
-  </div>
-</header>
-
-<!-- HERO -->
-<section id="home" class="hero">
-  <div class="panel">
-    <span class="tag">Andromeda • ADOs • CW20 & CW721</span>
-    <h1>HopeToken — Transparent funding & fractional ownership for orphanages</h1>
-    <p class="lead">Use blockchain + AI to track donations, distribute funds automatically, and reward donors with hope — and proof.</p>
-
-    <div class="stats">
-      <div class="stat"><div class="big" id="totalAmt">₹0</div><div class="muted">Total Donated</div></div>
-      <div class="stat"><div class="big" id="donorCount">0</div><div class="muted">Donors</div></div>
-      <div class="stat"><div class="big" id="txCount">0</div><div class="muted">Transactions</div></div>
-      <div class="stat"><div class="big" id="txCount">7</div><div class="muted">Orphanages Supported</div></div>
-    </div>
-  </div>
-
-  <div class="panel" style="display:flex;flex-direction:column;gap:10px;justify-content:center">
-    <div style="display:flex;align-items:center;gap:12px">
-      <div style="width:64px;height:64px;border-radius:12px;background:linear-gradient(180deg,#0ea5a0,#22d3ee);display:grid;place-items:center;font-weight:900;color:#012425">H</div>
-      <div>
-        <div style="font-weight:800">HopeToken Prototype</div>
-        <div class="muted" style="font-size:13px">Demo-ready UI — local simulation</div>
-      </div>
-    </div>
-    <div class="muted">Features: NFT identities, CW20 HopeTokens, Crowdfund, Splitters, Merkle rewards, AI dashboard</div>
-    <div style="display:flex;gap:8px;margin-top:8px">
-      <button class="btn" onclick="scrollToId('donate')">Try Donate</button>
-      <button class="btn secondary" onclick="scrollToId('features')">See Features</button>
-    </div>
-  </div>
-</section>
-
-<!-- ABOUT -->
-<section id="about" class="section">
-  <div class="panel">
-    <h2>About HopeToken</h2>
-    <p class="muted">HopeToken uses blockchain and AI to build trust between donors and orphanages. Donors receive fractional tokens representing their impact, while smart contracts ensure automatic and transparent fund allocation.Ensure every donation is tracked and verifiable on the blockchain. Allow micro-contributions without minimum limits. Provide orphanages with smart tools for resource planning. : Strengthen emotional connection through direct impact visibility. HopeToken redefines charitable giving by making it transparent, accountable, and interactive. With blockchain ensuring trust, AI providing data-driven insights, and fractional tokens giving donors tangible proof of impact, it can bridge the gap between generosity and measurable change.</p>
-  </div>
-</section>
-
-<!-- FEATURES -->
-<section id="features" class="section">
-  <h2>Key Features</h2>
-  <div class="grid-3" style="margin-top:12px">
-    
     <!-- Existing Features -->
     <div class="panel">
       <h3>Tokenized Identity</h3>
@@ -227,36 +154,6 @@
     </div>
   </div>
 </section>
-
-<!-- REWARDS -->
-<section id="rewards" class="section">
-  <h2>Rewards & Incentives</h2>
-  <p class="muted" style="max-width:800px;margin:auto;margin-bottom:20px;text-align:center;">
-    HopeToken rewards both donors and volunteers for their support, making contributions more engaging and impactful.
-    Rewards are designed to build long-term relationships and encourage continued participation.
-  </p>
-
-  <div class="grid-3" style="margin-top:12px">
-    
-    <div class="panel">
-      <h3>NFT Badges</h3>
-      <p class="muted">Unique blockchain-based achievement badges for donations, volunteering, and special campaigns.</p>
-    </div>
-
-    <div class="panel">
-      <h3>Bonus HopeTokens</h3>
-      <p class="muted">Extra HopeTokens for early donors, recurring supporters, or meeting funding milestones.</p>
-    </div>
-
-    <div class="panel">
-      <h3>Exclusive Access</h3>
-      <p class="muted">Invitations to private updates, donor-only events, and decision-making polls for project priorities.</p>
-    </div>
-
-  </div>
-</section>
-
-<footer>© 2025 HopeToken. Built with love • Upgrade to real blockchain & IPFS for production.</footer>
 
 <!-- ===== SECURE PAY COMPONENT (modal markup) ===== -->
 <div class="sp-overlay" id="spOverlay" aria-hidden="true">
